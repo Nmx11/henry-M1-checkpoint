@@ -43,8 +43,53 @@ const {
 // allí la recursión
 
 var objContains = function(obj, prop, value){
- 
+
+	// for(clave in obj){
+	// 	if((clave === [prop]) && [prop].hasOwnProperty(value)){
+	// 		return this[prop][value];
+	// }
+
+	// while(typeof obj[prop][value] !== 'object'){
+	// 	if(obj.hasOwnProperty(prop) && obj[prop].hasOwnProperty(value)){
+	// 		return this.prop.value;
+	// }
+
+	// }
+
+	
+	// while(obj[prop][value] !== ){
+	// 	for(clave in obj){
+			
+	// 	}
+	// }
+	
+	// for(clave in obj){
+
+	// 	while(clave !== prop)
+		// if(this.clave === prop && this.clave.value = value){
+		// 	return true
+		// }
+		// if(typeof this.clave.value === 'object'){
+		// 	for(clave in obj){
+		// 		if(this.clave === prop && this.clave.value === value)
+		// 			return true;
+		// 	}
+
+		// }
+		// return false;
+	// }
+
+	// this.head = null;
+	// obj.prototype.search([obj].[prop].[value])
+	// while(typeof [obj] === 'object' {
+	// 	search([obj].next);
+	// }
+	return false;
+
+	
 }
+
+
 
 
 // EJERCICIO 2
@@ -58,7 +103,17 @@ var objContains = function(obj, prop, value){
 // [Para más información del método: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/isArray]
 
 var countArray = function(array){
-  
+	var acc = 0;
+
+		 for(var i = 0; i < array.length; i++){
+		 	if(Array.isArray(array[i])){
+		 		for(var i = 0; i < array.length; i++){
+		 			acc += array[i];
+		 		}
+		 	}
+		 	acc += array[i];
+	}
+	return acc;
 }
 
 // ---------------------
@@ -78,7 +133,14 @@ var countArray = function(array){
 //    lista.size(); --> 3
 
 LinkedList.prototype.size = function(){
- 
+ // if(size(this) === null || undefined){
+ // 	return 0;
+ // }
+
+
+ if(this === null){
+ 	return 0;
+ }
 }
 
 
@@ -99,7 +161,20 @@ LinkedList.prototype.size = function(){
 //    sin antes tener cargada la posición 0 y 1.
 
 LinkedList.prototype.addInPos = function(pos, value){
-  
+ var nuevoNodo = new Node(value);
+
+ if(this.head === null){
+ 	return false;
+ }
+  // if(!this.head){
+  //   this.head = nuevoNodo;
+  // } else {
+  //   var tailActual = this.head;
+  //   while (tailActual.next !== null) {
+  //     tailActual = tailActual.next;
+  //   }
+  //   tailActual.next = nuevoNodo;
+  // }
 }
 
 // EJERCICIO 5
@@ -138,7 +213,7 @@ LinkedList.prototype.reverse = function(){
 //    Primer mano:
 //     A --> 4  vs  6 <-- B [6 > 4 entones gana la mano B y pone ambas cartas en su mazo, colocando primero la suya]
 //    - mazoUserA = [2,10,11]
-//    - mazoUserB = [6,9,10,3,6,4]
+//    - mazoUserB = [9,10,3,6,4]
 
 var cardGame = function(mazoUserA, mazoUserB){
 
@@ -164,7 +239,10 @@ var cardGame = function(mazoUserA, mazoUserB){
 //       5
 
 var generateBST = function(array){
- 
+ for (var i = 0; i < array.length; i++) {
+ 	BinarySearchTree.prototype.insert(array[i]);
+ }
+ return;
 }
 
 
@@ -199,7 +277,20 @@ var binarySearch = function (array, target) {
 
 
 var selectionSort = function(array) {
-  
+  for(var i = 0; i < array.length; i++){ 
+  	var min = i;
+  	for(var j = i + 1; j < array.length; j++){
+  		if(array[j] < array[min]){
+  			min = j;
+  		}
+   	 }
+   	 if(min !== i){
+   	 	var aux = array[i];
+   	 	array[i] = array[min];
+   	 	array[min] = aux;
+   	 }
+   }
+   return array;
 }
 
 // ----- Closures -----
@@ -217,7 +308,15 @@ var selectionSort = function(array) {
 //    sumaDiez(11); --> Devolverá 21 (Ya que 11 + 10 = 21)
 
 function closureSum(numFijo) {
- 
+
+	var numero = 5;
+	var numeroPasado = numFijo;
+
+	var otraFunc = function(numero){
+		return numero + numeroPasado;
+	};
+
+	return otraFunc();
 }
 
 // -------------------

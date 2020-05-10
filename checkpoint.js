@@ -44,49 +44,26 @@ const {
 
 var objContains = function(obj, prop, value){
 
-	// for(clave in obj){
-	// 	if((clave === [prop]) && [prop].hasOwnProperty(value)){
-	// 		return this[prop][value];
-	// }
 
-	// while(typeof obj[prop][value] !== 'object'){
-	// 	if(obj.hasOwnProperty(prop) && obj[prop].hasOwnProperty(value)){
-	// 		return this.prop.value;
-	// }
+	for(let clave in obj){
+		if([prop][value]){
+			return true;
+		}
 
-	// }
+		if(this.clave === [prop] && this.clave.value !== [value]){
+			return false;
+		}
 
-	
-	// while(obj[prop][value] !== ){
-	// 	for(clave in obj){
-			
-	// 	}
-	// }
-	
-	// for(clave in obj){
+		if(typeof this.clave === 'object'){
+			objContains();
+		}
 
-	// 	while(clave !== prop)
-		// if(this.clave === prop && this.clave.value = value){
-		// 	return true
-		// }
-		// if(typeof this.clave.value === 'object'){
-		// 	for(clave in obj){
-		// 		if(this.clave === prop && this.clave.value === value)
-		// 			return true;
-		// 	}
 
-		// }
-		// return false;
-	// }
+		else {
+			return false;
+		}
+	}
 
-	// this.head = null;
-	// obj.prototype.search([obj].[prop].[value])
-	// while(typeof [obj] === 'object' {
-	// 	search([obj].next);
-	// }
-	return false;
-
-	
 }
 
 
@@ -105,13 +82,16 @@ var objContains = function(obj, prop, value){
 var countArray = function(array){
 	var acc = 0;
 
-		 for(var i = 0; i < array.length; i++){
-		 	if(Array.isArray(array[i])){
-		 		for(var i = 0; i < array.length; i++){
-		 			acc += array[i];
-		 		}
-		 	}
+	var arr = array;
+
+		 for(var i = 0; i < arr.length; i++){
 		 	acc += array[i];
+		 	if(Array.isArray(arr[i])){
+		 		// for(var i = 0; i < array[i].length; i++){
+		 		// 	acc += [];
+		 		// }
+		 		countArray();
+		 	}
 	}
 	return acc;
 }
@@ -133,14 +113,39 @@ var countArray = function(array){
 //    lista.size(); --> 3
 
 LinkedList.prototype.size = function(){
- // if(size(this) === null || undefined){
+
+if(!this.head){
+	return 0;	
+}
+ // if(this.head === null){
  // 	return 0;
  // }
 
+ // var current = this.head;
+ // var contador = 0;
 
- if(this === null){
- 	return 0;
- }
+ // if(current !== null){
+ // 	contador += 1;
+ // 	current = current.next;
+ // }
+
+ // return contador;
+var current = this.head;
+var acc = 0;
+
+	while(current !== null){
+		acc += 1;
+		current = current.next;
+		// if(Array.isArray[current]){
+		// 	for(var i = 0; i < current.length; i++){
+		// 		acc += current[i];
+		// 	}
+		// }
+	}
+
+
+
+ return acc;
 }
 
 
@@ -161,11 +166,21 @@ LinkedList.prototype.size = function(){
 //    sin antes tener cargada la posición 0 y 1.
 
 LinkedList.prototype.addInPos = function(pos, value){
- var nuevoNodo = new Node(value);
+	// search(arg[pos])
 
- if(this.head === null){
- 	return false;
- }
+	if(this.head === true || undefined){
+		this.insertAt(value, pos);
+		return true;
+	}
+	
+
+	// LinkedList.indexOf(pos)
+	if(this.head === null){
+		return false;
+	}
+
+
+
   // if(!this.head){
   //   this.head = nuevoNodo;
   // } else {
@@ -185,7 +200,25 @@ LinkedList.prototype.addInPos = function(pos, value){
 //    Lista nueva luego de aplicar el reverse: Head --> 13 --> 10 --> 4 --> 1 --> null
 
 LinkedList.prototype.reverse = function(){
- 
+
+	var newList = new LinkedList();
+
+	// var nuevoArray = [];
+
+	while(LinkedList.prototype.head !== null){
+		aux = this.prototype.remove();
+		newList.add(aux);
+
+	}
+
+	return newList;
+
+	// while(this.head !== null){
+
+	// 	// var removedAux = LinkedList.prototype.remove();
+	// 	// nuevoArray.unshift(removedAux);
+	// }
+	// return nuevoArray;
 }
 
 
@@ -217,6 +250,35 @@ LinkedList.prototype.reverse = function(){
 
 var cardGame = function(mazoUserA, mazoUserB){
 
+	while(mazoUserA.size() !== 0 && mazoUserB.size() !== 0){
+
+		auxA = mazoUserA.dequeue();
+		auxB = mazoUserB.dequeue();
+
+		if(auxA > auxB){
+			mazoUserA.enqueue(auxA);
+			mazoUserA.enqueue(auxB);
+		}
+
+		if(auxA < auxB){
+			mazoUserB.enqueue(auxB);
+			mazoUserB.enqueue(auxA);
+		}
+
+		// if(auxA === auxB){			
+		// }
+	}
+
+	if (mazoUserB.size() === 0 && mazoUserA.size() !== 0){
+		return "A wins!";
+	}
+	if (mazoUserA.size() === 0 && mazoUserB.size() !== 0){
+		return "B wins!";
+	}
+	if(mazoUserA.size() === mazoUserB.size()){
+		return "Game tie!";
+	}
+
 }
 
 // ---------------
@@ -239,10 +301,25 @@ var cardGame = function(mazoUserA, mazoUserB){
 //       5
 
 var generateBST = function(array){
- for (var i = 0; i < array.length; i++) {
- 	BinarySearchTree.prototype.insert(array[i]);
- }
- return;
+
+	// insert(array)
+	var primero = array[0];
+
+
+	var tree = new BinarySearchTree(primero);
+
+	for(var i = 1; i < array.length; i++){
+		tree.insert(array[i]);
+	}
+
+	// insert(tree);
+
+	return tree;
+
+ // for (var i = 0; i < array.length; i++) {
+ // 	BinarySearchTree.prototype.insert(array[i]);
+ // }
+ // return;
 }
 
 
@@ -263,7 +340,12 @@ var generateBST = function(array){
 
 
 var binarySearch = function (array, target) {
+	// array[target]
+	if(array.indexOf(target)){
+		return array.indexOf(target);
+	}
 
+	return -1;
   
 }
 
@@ -309,15 +391,23 @@ var selectionSort = function(array) {
 
 function closureSum(numFijo) {
 
-	var numero = 5;
-	var numeroPasado = numFijo;
+	// var numeroPasado = numFijo;
+	// var numero = 0;
 
-	var otraFunc = function(numero){
-		return numero + numeroPasado;
-	};
+	// var parametro = 5;
+
+	var numero = numFijo;
+	// var parametro = 0;
+
+		function otraFunc(parametro){
+			return  parametro + numero;
+		}
 
 	return otraFunc();
 }
+
+// var closure = closureSum();
+// closure();
 
 // -------------------
 

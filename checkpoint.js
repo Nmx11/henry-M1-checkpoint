@@ -46,7 +46,7 @@ var objContains = function(obj, prop, value){
 
 
 	for(let clave in obj){
-		if([prop][value]){
+		if(this.clave === [prop] && this.clave.value === [value]){
 			return true;
 		}
 
@@ -80,19 +80,34 @@ var objContains = function(obj, prop, value){
 // [Para más información del método: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/isArray]
 
 var countArray = function(array){
-	var acc = 0;
+	var acc = 0
 
-	var arr = array;
-
-		 for(var i = 0; i < arr.length; i++){
-		 	acc += array[i];
-		 	if(Array.isArray(arr[i])){
-		 		// for(var i = 0; i < array[i].length; i++){
-		 		// 	acc += [];
-		 		// }
-		 		countArray();
-		 	}
+	if(array == 0){
+		return 0;
 	}
+
+	array.forEach(function(elemento){
+
+		if(typeof elemento === 'number'){
+			acc += elemento;
+		}
+		if(Array.isArray(elemento)){
+			elemento.forEach(function(numero){
+				if(typeof numero === 'number'){
+					acc += numero;
+				}
+				if(Array.isArray(numero)){
+					numero.forEach(function(otroNumero){
+						if(typeof otroNumero === 'number'){
+							acc += otroNumero;
+						}
+					})
+				}
+				
+			})
+		}
+	})
+
 	return acc;
 }
 
@@ -117,30 +132,13 @@ LinkedList.prototype.size = function(){
 if(!this.head){
 	return 0;	
 }
- // if(this.head === null){
- // 	return 0;
- // }
 
- // var current = this.head;
- // var contador = 0;
-
- // if(current !== null){
- // 	contador += 1;
- // 	current = current.next;
- // }
-
- // return contador;
 var current = this.head;
 var acc = 0;
 
 	while(current !== null){
 		acc += 1;
 		current = current.next;
-		// if(Array.isArray[current]){
-		// 	for(var i = 0; i < current.length; i++){
-		// 		acc += current[i];
-		// 	}
-		// }
 	}
 
 
@@ -166,30 +164,30 @@ var acc = 0;
 //    sin antes tener cargada la posición 0 y 1.
 
 LinkedList.prototype.addInPos = function(pos, value){
-	// search(arg[pos])
 
-	if(this.head === true || undefined){
-		this.insertAt(value, pos);
-		return true;
-	}
-	
 
-	// LinkedList.indexOf(pos)
+	var nuevoNodo = new Node(value);
+
+
+
+	var repeat = 'current' + '.next'.repeat(pos);
+
+
 	if(this.head === null){
 		return false;
 	}
 
+	while(this.head !== null){
 
 
-  // if(!this.head){
-  //   this.head = nuevoNodo;
-  // } else {
-  //   var tailActual = this.head;
-  //   while (tailActual.next !== null) {
-  //     tailActual = tailActual.next;
-  //   }
-  //   tailActual.next = nuevoNodo;
-  // }
+		var current = this.head;
+		repeat.value = value;
+
+		return true;
+
+	}
+
+ 
 }
 
 // EJERCICIO 5
@@ -201,24 +199,49 @@ LinkedList.prototype.addInPos = function(pos, value){
 
 LinkedList.prototype.reverse = function(){
 
-	var newList = new LinkedList();
+	// // var nuevoArray = [];
+
+	// while(LinkedList.prototype.head !== null){
+	// 	aux = this.prototype.remove();
+	// 	newList.add(aux);
+
+	// }
 
 	// var nuevoArray = [];
 
-	while(LinkedList.prototype.head !== null){
-		aux = this.prototype.remove();
-		newList.add(aux);
-
-	}
-
-	return newList;
 
 	// while(this.head !== null){
+	// 	var current = this.head;
 
-	// 	// var removedAux = LinkedList.prototype.remove();
-	// 	// nuevoArray.unshift(removedAux);
+	// 	// var auxRemove = remove();
+
+	// 	nuevoArray.push(current.value);
+
+	// 	current = current.next;
+
 	// }
-	// return nuevoArray;
+	
+
+
+
+
+	// var nuevoArray = [];
+
+	// var current = this.head;
+
+	// while(current !== null){
+		
+	// 	nuevoArray.push(current.value);
+	// 	current = current.next;
+	// }
+
+	nuevoArray.push(null);
+	nuevoArray.unshift(this.head);
+
+	return nuevoArray;
+
+
+
 }
 
 
@@ -265,8 +288,6 @@ var cardGame = function(mazoUserA, mazoUserB){
 			mazoUserB.enqueue(auxA);
 		}
 
-		// if(auxA === auxB){			
-		// }
 	}
 
 	if (mazoUserB.size() === 0 && mazoUserA.size() !== 0){
@@ -302,7 +323,6 @@ var cardGame = function(mazoUserA, mazoUserB){
 
 var generateBST = function(array){
 
-	// insert(array)
 	var primero = array[0];
 
 
@@ -312,14 +332,8 @@ var generateBST = function(array){
 		tree.insert(array[i]);
 	}
 
-	// insert(tree);
-
 	return tree;
 
- // for (var i = 0; i < array.length; i++) {
- // 	BinarySearchTree.prototype.insert(array[i]);
- // }
- // return;
 }
 
 
@@ -340,7 +354,7 @@ var generateBST = function(array){
 
 
 var binarySearch = function (array, target) {
-	// array[target]
+	
 	if(array.indexOf(target)){
 		return array.indexOf(target);
 	}
